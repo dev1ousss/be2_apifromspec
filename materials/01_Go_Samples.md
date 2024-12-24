@@ -23,7 +23,7 @@ import (
 )
 ```
 
-Now let's describe the methods that handle HTTP requests. Let it be the getModels method, which gets all the models. This method receives ResponseWriter and pointer to Request.
+Now let's describe the methods that handle HTTP-requests. Let it be the getModels method, which gets all the models. This method receives ResponseWriter and pointer to Request.
 
 ```go
 var models []models

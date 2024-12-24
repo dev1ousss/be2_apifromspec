@@ -1,5 +1,5 @@
 #### **Java**
-Создание приложения HTTP API в Java начинается так же с описания моделей. Будем использовать библиотеку Spring Boot.
+Создание приложения HTTP API в Java начинается также с описания моделей. Будем использовать библиотеку Spring Boot.
 
 ```java
 public class ExampleModel {
@@ -24,7 +24,7 @@ public class ExampleModel {
 }
 ```
 
-Теперь опишем интерфейс и его реализацию - сервис.
+Теперь опишем интерфейс и его реализацию — сервис.
 
 ```java
 public interface ExampleService {

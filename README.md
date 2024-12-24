@@ -11,18 +11,18 @@
 
 ### Introduction
 
-Hello! In this block you'll learn about RESTful API and how it's developed in the most popular languages. At the end, you'll get a practical task on how to design an API for your own store!
+Hello! In this block you'll learn about RESTful API and how to develop it in the most popular languages. At the end, you'll get a practical task on how to design an API for your own store!
 
 ## Chapter II
 
 ### REST API
-Let's start by deciphering the acronym. REST —  **RE**presentational **S**tate **T**ransfer. This technology allows you to retrieve and modify data and states of remote applications by passing HTTP requests over the Internet or any other network.
+Let's start by deciphering the acronym. REST — **RE**presentational **S**tate **T**ransfer. This technology allows you to retrieve and modify data and states of remote applications by passing HTTP requests over the Internet or any other network.
 
 Simply put, a REST API is when a server application gives a client application access to its data through a specific URL.
 
 The REST API allows you to use the HTTP protocol (the encrypted version is HTTPS) to communicate between programs, which is how we receive and send most information on the Internet.
 
-When we type the URL http://website.com/something into the address bar, we are actually going to the website.com server and requesting a resource called /something. "Go there, get me that" is the HTTP request. Now suppose a program is running on website.com and another program wants to access it. In order for the program to understand what functions it needs, different addresses are used.
+When we type the URL http://website.com/something into the address bar, we are actually going to the website.com server and requesting a resource called /something. "Go there, get me that" is the HTTP request. Now suppose there is a program running on website.com and another program wants to access it. In order for the program to understand what functions it needs, different addresses are used.
 
 The foundation of the REST API is [HTTP Methods](https://www.rfc-editor.org/rfc/rfc2616). 
 Standard HTTP methods:
@@ -32,7 +32,7 @@ Standard HTTP methods:
 - PATCH — used to update a portion of an existing resource;
 - DELETE — used to delete a resource.
 
-So, there are 5 functions that any program can use to get resource data. In fact, there are also functions like HEAD, OPTIONS, etc.
+So there are 5 functions that any program can use to get resource data. In fact, there are also functions such as HEAD, OPTIONS, etc.
 
 REST API is the most popular solution to organize interaction between different programs. It is used to connect mobile applications with server applications, to build microservice applications or to provide access to third-party programs.
 
@@ -40,16 +40,16 @@ It's important to note that each REST API request returns its results in numeric
 
 ![linux_network](./misc/images/responses.png)
 
-Using the REST API you can exchange not only textual information, but also send data in special formats: XML, JSON, etc.
+Using the REST API, you can not only exchange textual information, but also send data in special formats: XML, JSON, etc.
 
 Yes, there are other API system architectures (JSON-PRC, XML-RPC, GraphQL). However, REST is still the most popular tool for building interaction between remote applications.
 
 #### How does REST work??
 The basic principle of the RESTful API is the same as the Internet. The client communicates with the server through the API when it needs a resource. Developers describe how the REST API is used by the client in the API documentation for the server application. The following are the basic steps of a REST API request:
-- The client sends a request to the server. Guided by the API documentation, the client formats the request so that the server understands it.
+- The client sends a request to the server. Using the API documentation, the client formats the request so that the server understands it.
 - The server authenticates the client and confirms that the client has the right to make the request.
 - The server receives the request and processes it internally.
-- The server sends the response back to the client. The response contains information that tells the client whether the request was successful. The request also contains information requested by the client.
+- The server sends the response back to the client. The response contains information that tells the client whether the request was successful. The request also contains information that the client requested.
 - REST API request and response information can vary slightly depending on how developers design the API.
 
 ### What is a RESTful system?
@@ -84,7 +84,7 @@ In general, the document consists of the following parts:
 
 - info
 
-    This object contains basic information about the API (e.g. header, version, license link, etc.) Let's look at the example:
+    This object contains basic information about the API (e.g. header, version, license link, etc.). Let's look at the example:
     ```yaml
     openapi: "3.0.2"
     info:
@@ -103,7 +103,7 @@ In general, the document consists of the following parts:
 
 - servers
 
-    This object allows you to specify the base path used in API requests. The base path is the part of the URL that comes before the endpoint. Endpoints will be considered in the path object. Let's look at the example of servers.
+    This object allows you to specify the base path used in API requests. The base path is the part of the URL that comes before the endpoint. Endpoints are taken into account in the path object. Let's take the example of servers.
 
     ```yaml
     servers:
@@ -113,7 +113,7 @@ In general, the document consists of the following parts:
 
 - paths
 
-    The path object contains information about endpoints. Each element in path object contains operations object (GET, POST, PUT, DELETE methods). The structure of a single connection endpoint looks like this.
+    The Path object contains information about endpoints. Each element in the path object contains an operations object (GET, POST, PUT, DELETE methods). The structure of a single connection endpoint looks like this.
 
     ```yaml
     paths:
@@ -132,9 +132,9 @@ In general, the document consists of the following parts:
           requestBody:
           callbacks:
     ```
-    Not all fields are mandatory. For example, if a request has no request body parameters, it is not necessary to include the requestBody object.
+    Not all fields are required. For example, if a request has no request body parameters, it is not necessary to include the requestBody object.
 
-    Request parameters contain an array of parameters with their objects. 
+    Request parameters include an array of parameters with their objects. 
 
     ```yaml
     parameters:
@@ -179,33 +179,33 @@ In general, the document consists of the following parts:
 
 - components
 
-    This object contains reused definitions that can appear in several places in the specification document.
+    This object contains reused definitions that may appear in multiple locations in the specification document.
 
 - security
 
     The security object specifies the security or authorization protocol used to send requests.
 
-Besides, there are tags and externalDocs objects.
+There are also tags and externalDocs objects.
 
 #### **Swagger UI**
 
-Swagger UI provides a framework that reads the OpenAPI specification and creates a web page with interactive documentation where requests can be sent in real time.
+Swagger UI provides a framework that reads the OpenAPI specification and creates an interactive documentation web page that can be queried in real time.
 
 The official [swagger specification](https://swagger.io/specification/).
 
-It is important to note that there are two approaches to writing documentation. The first approach is to write documentation almost automatically on the basis of the code. The second is to write it separately from the code.
+It is important to note that there are two approaches to writing documentation. The first approach is to write documentation almost automatically from the code. The second is to write it separately from the code.
 
-**In the task you will write comments in the code, which will be the basis for the OpenAPI specification, i.e. use the 1 approach.**
+**In the task, you will write comments in the code that will be the basis for the OpenAPI specification, i.e., using approach 1.**
 
 ![Swagger example](./misc/images/swagger.png)
 
 ### Implementation of the HTTP API in modern programming languages
-You can look at examples based on which you can implement HTTP API in the materials.
+You can look at examples based on which you can implement the HTTP API in the materials.
 
 ### About Postgres
-You will need a DBMS (database management system) to implement your project. We recommend that you use Postgres. What is Postgres?
+You will need a DBMS (database management system) to implement your project. We recommend using Postgres. What is Postgres?
 
-PostgreSQL is an open source object-relational database management system. Because it is an open source project, it is constantly being improved and supports many extensions. New versions of the database are released on a regular basis. Both UNIX-like systems and Windows systems are supported.
+PostgreSQL is an open source object relational database management system. Because it is an open source project, it is constantly being improved and supports many extensions. New versions of the database are released regularly. Both UNIX-like systems and Windows systems are supported.
 
 You can download PostgreSQL from the [official website](https://www.postgresql.org/download/). If you download the desktop version, you will also get PgAdmin, a client for working with postgres.
 
@@ -225,7 +225,7 @@ So you've decided to open your own store. You don't have money to buy a website,
 
 **Store type**: appliance store.
 
-** Pay attention! ** We implement relational model in the database! Study the models carefully and design the database model according to normal forms. You will have to learn about normal forms by yourself!
+_**Pay attention!** We are implementing a relational model in the database! Study the models carefully and design the database model according to normal forms. You have to learn about normal forms yourself!_
 
 The entities are:
 ```
@@ -280,45 +280,45 @@ The entities are:
 }
 
 ```
-It is possible to add additional entities.
+It is possible to add more entities.
 
 The entities described above must be implemented in the PostgreSQL relational database. According to the resulting tables, you must use DAO (Data Access Objects) objects in the project to retrieve data in the repositories. 
 
-**Important**: You need to pick the optimal type in the DBMS to store the data (For each column field)! 
+**Important**: You must choose the optimal type in the DBMS to store the data (for each column field)! 
 
 **Tip**: For unique identifiers use UUID/GUID type.
 
-You need to implement popular types of HTTP requests (GET, POST, PUT, DELETE, PATCH).
+You need to implement common types of HTTP requests (GET, POST, PUT, DELETE, PATCH).
 
 - For clients:
     
-    1. Add a client (json is input, corresponding to the structure described above).
+    1. Add a client (json is input, according to the structure described above).
 
     2. Delete a client (by its identifier).
 
-    3. Get clients by first and last name (parameters — first and last name).
+    3. Get clients by first and last name (parameters - first and last name).
 
-    4. Get all clients (In this request it is necessary to provide optional pagination parameters in the request line: limit and offset.). If these parameters are missing, return the whole list.
+    4. Get all clients (In this request it is necessary to specify optional pagination parameters in the request line: limit and offset.) If these parameters are missing, the whole list will be returned.
 
-    5. Change the client's address (parameters: Id and new address as json according to the format described above).
+    5. Change client address (parameters: Id and new address as json according to the format described above).
 
 - For products:
 
-    1. Add a product (json is input, corresponding to the structure described above).
+    1. Add a product (json is input, according to the structure described above).
 
-    2. Decrease the quantity of the product (the id of the product and how much to decrease is given as an input).
+    2. Decrease the quantity of the product (the id of the product and how much to decrease is given as input).
 
     3. Get the product by id.
 
-    4. Getting all the available products.
+    4. Get all available products.
 
-    5. Deleting a product by id.
+    5. Delete a product by id.
 
 - For suppliers:
 
-    1. Add a supplier (json is input, corresponding to the structure described above).
+    1. Add a supplier (json is input, according to the structure described above).
 
-    2. Change the supplier's address (parameters: Id and new address as json according to the format described above).
+    2. Change the address of the supplier (parameters: Id and new address as json according to the format described above).
 
     3. Delete a supplier by id.
 
@@ -328,9 +328,9 @@ You need to implement popular types of HTTP requests (GET, POST, PUT, DELETE, PA
 
 - For images:
 
-    1. Add an image (The byte array of the image and the product id is input).
+    1. Add an image (the byte array of the image and the product id is input).
 
-    2. Change the image (the image id and a new line to replace is input).
+    2. Replace image (the image id and a new line to replace are given).
 
     3. Delete an image by image id.
  
@@ -340,16 +340,16 @@ You need to implement popular types of HTTP requests (GET, POST, PUT, DELETE, PA
 
 The methods that return an image must return an image (array of bytes) with the "application/octet-stream" header. The file must be loaded automatically.
 
-For each of the requests described above, if the data in the body is provided to the input, it is necessary to validate the data and if validation was unsuccessful — give 400 error code with the message.
+For each of the requests described above, if the data in the body is provided to the input, it is necessary to validate the data and if validation was unsuccessful - give 400 error code with the message.
 
-If the request includes data update or receipt by Id, it is necessary to return error code 404 with the message in case of missing data.
+If the request involves updating or receiving data by Id, it is necessary to return error code 404 with the message in case of missing data.
 
 If the request involves returning a list of data, an empty list is returned if there is no data.
 
 Mandatory requirements: 
-- Full coverage of methods with OpenAPI specification, presence of swagger comments and example objects. The Swagger specification should be given at: 
+- Full coverage of methods with OpenAPI specification, presence of Swagger comments and sample objects. The Swagger specification should be available at: 
   >http://localhost:{YourPort}/swagger/index.html
-- You have to use DTOs (Data Transfer Objects) to communicate with the API. To convert one model to another, use mappers. The path to the controller methods must start with the prefix: 
+- You must use Data Transfer Objects (DTOs) to communicate with the API. To convert one model to another, use mappers. The path to the controller methods must start with the prefix 
   >/api/v1/...
-- The API must necessarily be designed according to [RESTFUL](https://restfulapi.net/) methodology.
+- The API must be designed according to the [RESTFUL](https://restfulapi.net/) methodology.
 - Use the database to store data, implementing the **Repository** pattern as the data access layer.

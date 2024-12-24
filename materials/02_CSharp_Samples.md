@@ -1,6 +1,6 @@
 #### **C#**
-The ASP.NET framework is used to write the HTTP API in C#. Let's first look at models and controllers.
-A **Model** is some formalization of a concept that is used in the system. The model contains data in the form of attributes, and the model is in no way connected to the UI. The model is responsible for the data on its own (it performs validation).
+The ASP.NET framework is used to write the HTTP API in C#. Let's take a look at models and controllers first.
+A **Model** is a formalization of a concept used in the system. The model contains data in the form of attributes, and the model is not connected to the UI in any way. The model is responsible for the data itself (it performs validation).
 
 ```csharp
 public abstract class BaseModel
@@ -16,7 +16,7 @@ public class ExampleModel : BaseModel
 }
 ```
 
-**Repositories** are used to work with databases (see Repository pattern). The repository level implements CRUD operations on data (CREATE, READ, UPDATE, DELETE).
+**Repositories** are used to work with databases (see Repository Pattern). The repository layer implements CRUD operations on data (CREATE, READ, UPDATE, DELETE).
 
 ```csharp
 public interface IExampleRepository
@@ -61,9 +61,9 @@ public class ExampleService : IExampleService
 }
 ```
 
-It is recommended to design the system following SOLID principles. In addition, the Dependency Injection pattern is implemented at the framework level, which allows you to "inject" dependencies to system components.
+It is recommended to design the system according to SOLID principles. In addition, the Dependency Injection pattern is implemented at the framework level, which allows you to "inject" dependencies to system components.
 
-**Controller** is an intermediary between the business logic and the client side of the application. The controller handles network requests, user events, is responsible for updating data, and is the entry point into request processing.
+The **Controller** is an intermediary between the business logic and the client side of the application. The controller handles network requests, user events, is responsible for updating data, and is the entry point for request processing.
 
 ```csharp
 [ApiController]

@@ -24,7 +24,7 @@ public class ExampleModel {
 }
 ```
 
-Now let's describe the interface and its implementation - the service.
+Now let's describe the interface and its implementation — the service.
 
 ```java
 public interface ExampleService {

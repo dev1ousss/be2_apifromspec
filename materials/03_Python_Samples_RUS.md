@@ -1,7 +1,7 @@
 #### **Python**
-Самые популярные фреймворки для реализации HTTP API на языке Python - это Flask и Django.
+Самые популярные фреймворки для реализации HTTP API на языке Python — это Flask и Django.
 
-Flask - микрофреймворк для создания приложений и REST API. Главная задача Flask - обрабатывать HTTP запросы и перенаправлять их на необходимую функцию в приложении. Приведем пример Flask приложения для REST API.
+Flask — микрофреймворк для создания приложений и REST API. Главная задача Flask — обрабатывать HTTP-запросы и перенаправлять их на необходимую функцию в приложении. Приведем пример Flask-приложения для REST API.
 
 ```python
 # app.py
@@ -28,9 +28,9 @@ def add_model():
     return model, 201
 ```
 
-Теперь посмотрим на Django - ещё один популярный фреймворк для создания REST API приложения.
+Теперь посмотрим на Django — ещё один популярный фреймворк для создания REST API приложения.
 
-Изначально требуется создать Django проект, затем добавить в settings.py используемые модули.
+Изначально требуется создать Django-проект, затем добавить в settings.py используемые модули.
 
 ```python
 # examplemodelsapi/settings.py
@@ -85,7 +85,7 @@ class ExampleModelViewSet(viewsets.ModelViewSet):
     queryset = ExampleModel.objects.all()
 ```
 
-Теперь обновим urls.py
+Теперь обновим urls.py.
 
 ```python
 # examplemodels/urls.py

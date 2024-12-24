@@ -1,7 +1,7 @@
 #### **Python**
 The most popular frameworks for implementing HTTP APIs in Python are Flask and Django.
 
-Flask is a microframework for creating applications and REST APIs. Flask's main task is to handle HTTP requests and redirect them to the necessary function in the application. Here is an example of a Flask application for a REST API.
+Flask is a micro-framework for creating web applications and RESTful APIs. Its main task is handling HTTP requests and routing them to the appropriate function in the app. Here's an example of how to use Flask to create a RESTful API.
 
 ```python
 # app.py
@@ -85,7 +85,7 @@ class ExampleModelViewSet(viewsets.ModelViewSet):
     queryset = ExampleModel.objects.all()
 ```
 
-Now update urls.py
+Now update urls.py.
 
 ```python
 # examplemodels/urls.py
