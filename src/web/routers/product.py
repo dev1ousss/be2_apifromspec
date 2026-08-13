@@ -51,3 +51,37 @@ def decrease_stock(
     if product is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Product not found")
     return product
+
+
+@router.get("", response_model=list[ProductRead], summary="Get all available products")
+def get_available_products(
+    limit: int | None = Query(None, ge=0),
+    offset: int | None = Query(None, ge=0),
+    repo: ProductRepository = Depends(get_product_repository),
+):
+    return repo.list_available(limit, offset)
+
+
+@router.delete(
+    "/{product_id}", status_code=status.HTTP_204_NO_CONTENT, summary="Delete product"
+)
+def delete_product(
+    product_id: UUID, repo: ProductRepository = Depends(get_product_repository)
+):
+    if repo.delete(product_id) is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Product not found")
+    return None
+
+
+@router.get(
+    "/{product_id}",
+    response_model=ProductRead,
+    summary="Get product by id",
+)
+def get_product(
+    product_id: UUID, repo: ProductRepository = Depends(get_product_repository)
+):
+    product = repo.get_by_id(product_id)
+    if product is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Товар не найден")
+    return product
