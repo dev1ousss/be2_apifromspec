@@ -10,6 +10,9 @@ router = APIRouter(prefix="/addresses", tags=["Address"])
 
 
 def get_address_repository(db: Session = Depends(get_db)) -> AddressRepository:
+    """
+    Dependency provider for AddressRepository.
+    """
     return AddressRepository(db)
 
 
@@ -17,7 +20,12 @@ def get_address_repository(db: Session = Depends(get_db)) -> AddressRepository:
     "",
     response_model=AddressRead,
     status_code=status.HTTP_201_CREATED,
-    summary="Create address",
+    summary="Create a new address",
+    description="Accepts country, city, and street details, creates a persistent address record in the database, and returns the generated UUID.",
+    responses={
+        201: {"description": "Address successfully created and persisted."},
+        400: {"description": "Invalid JSON payload or validation constraints failed."},
+    },
 )
 def create_address(
     payload: AddressCreate, repo: AddressRepository = Depends(get_address_repository)
@@ -25,7 +33,16 @@ def create_address(
     return repo.create(payload)
 
 
-@router.get("/{address_id}", response_model=AddressRead, summary="Get address by id")
+@router.get(
+    "/{address_id}",
+    response_model=AddressRead,
+    summary="Get address by ID",
+    description="Retrieves full details of a specific address from the database using its unique UUID identifier.",
+    responses={
+        200: {"description": "Address successfully retrieved."},
+        404: {"description": "Requested address UUID not found in the database."},
+    },
+)
 def get_address(
     address_id: UUID, repo: AddressRepository = Depends(get_address_repository)
 ):
@@ -37,7 +54,17 @@ def get_address(
     return address
 
 
-@router.put("/{address_id}", response_model=AddressRead, summary="Update address")
+@router.put(
+    "/{address_id}",
+    response_model=AddressRead,
+    summary="Update an existing address",
+    description="Performs a full resource update (replacement) for the specified address ID. All payload fields are required.",
+    responses={
+        200: {"description": "Address successfully updated and saved."},
+        400: {"description": "Validation constraints failed for update payload."},
+        404: {"description": "Address with the specified UUID not found."},
+    },
+)
 def update_address(
     address_id: UUID,
     payload: AddressUpdate,
@@ -51,7 +78,17 @@ def update_address(
     return address
 
 
-@router.get("", response_model=list[AddressRead], summary="Get all addresses")
+@router.get(
+    "",
+    response_model=list[AddressRead],
+    summary="Get a paginated list of addresses",
+    description="Returns a list of all existing addresses using limit and offset pagination. Returns an empty array if no records match.",
+    responses={
+        200: {
+            "description": "Paginated array of address records returned successfully."
+        },
+    },
+)
 def list_addresses(
     limit: int | None = None,
     offset: int | None = None,
@@ -61,7 +98,14 @@ def list_addresses(
 
 
 @router.delete(
-    "/{address_id}", status_code=status.HTTP_204_NO_CONTENT, summary="Delete address"
+    "/{address_id}",
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="Delete an address by ID",
+    description="Deletes the specified address from the database by its unique UUID. Returns an empty response with HTTP status 204.",
+    responses={
+        204: {"description": "Address successfully removed. No content returned."},
+        404: {"description": "Address with the specified UUID not found."},
+    },
 )
 def delete_address(
     address_id: UUID, repo: AddressRepository = Depends(get_address_repository)
