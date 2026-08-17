@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from datasource.database import Base, engine
 from fastapi import FastAPI
 from fastapi.openapi.docs import get_swagger_ui_html
@@ -12,12 +14,24 @@ from web.routers import (
 Base.metadata.create_all(bind=engine)
 
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Действия при старте
+    print("\n" + "=" * 70)
+    print(
+        "🔗 Рабочая ссылка для вашего компьютера: http://127.0.0.1:8000/swagger/index.html"
+    )
+    print("=" * 70 + "\n")
+    yield
+
+
 app = FastAPI(
     title="Shop API",
     version="1.0.0",
     description="API для управления магазином (товары, клиенты, адреса)",
     docs_url=None,
     redoc_url=None,
+    lifespan=lifespan,
 )
 
 

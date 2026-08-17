@@ -12,5 +12,18 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+
+  backend:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:postgres@db:5432/shop
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - db
+
 volumes:
   db_data:
